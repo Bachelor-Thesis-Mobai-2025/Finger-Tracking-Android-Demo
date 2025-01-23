@@ -1,0 +1,57 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FingerTrackingAndroid" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+    <style name="Widget.CustomSlideToAnswer" parent="Widget.MaterialComponents.Slider">
+        <!-- Increase track thickness -->
+        <item name="trackHeight">66dp</item>
+        <!-- Make thumb bigger -->
+        <item name="thumbRadius">32dp</item>
+        <item name="thumbHeight">64dp</item>
+        <item name="thumbWidth">64dp</item>
+        <!-- Possibly tweak halo color/radius -->
+        <item name="haloColor">@android:color/darker_gray</item>
+        <item name="haloRadius">24dp</item>
+
+        <!-- Set default track/active color, you can override it programmatically anyway -->
+        <item name="trackColor">@color/gray_light</item>
+        <item name="trackColorActive">@color/gray_light</item>
+        <item name="trackColorInactive">@color/gray_light</item>
+        <item name="thumbTint">@color/gray_light</item>
+    </style>
+
+    <style name="Widget.HideTrackSlider" parent="Widget.MaterialComponents.Slider">
+        <!-- Hide the track -->
+        <item name="trackHeight">0dp</item>
+        <item name="trackColor">@android:color/transparent</item>
+        <item name="trackColorActive">@android:color/transparent</item>
+        <item name="trackColorInactive">@android:color/transparent</item>
+
+        <!-- Hide the thumb -->
+        <item name="thumbRadius">0dp</item>
+        <item name="thumbTint">@android:color/transparent</item>
+
+        <!-- Hide the halo -->
+        <item name="haloColor">@android:color/transparent</item>
+
+        <!-- Hide any labels -->
+        <item name="labelBehavior">gone</item>
+    </style>
+    <style name="Widget.CircleThumbSlider" parent="Widget.MaterialComponents.Slider">
+        <!-- Hide the track entirely -->
+        <item name="trackHeight">0dp</item>
+        <item name="trackColor">@android:color/transparent</item>
+        <item name="trackColorActive">@android:color/transparent</item>
+        <item name="trackColorInactive">@android:color/transparent</item>
+
+        <!-- Show a circular thumb in darker gray -->
+        <item name="thumbRadius">24dp</item> <!-- or 16/20, depending on desired size -->
+        <item name="thumbTint">@color/darker_gray</item>
+
+        <!-- Hide the halo and labels -->
+        <item name="haloColor">@android:color/transparent</item>
+        <item name="labelBehavior">gone</item>
+    </style>
+</resources>

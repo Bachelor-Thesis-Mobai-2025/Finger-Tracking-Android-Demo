@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FingerTrackingAndroid</string>
+    <string name="send_money_to_john">Send 2000kr til Brage?</string>
+    <string name="confirm">Confirm</string>
+    <string name="deny">Deny</string>
+    <string name="confirm_deny">Confirm/Deny</string>
+    <string name="swipe_right_to_confirm">Sveip for å bekrefte</string>
+    <string name="cancel">Cancel</string>
+    <string name="vipps">Vipps</string>
+</resources>
