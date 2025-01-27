@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_image">
@@ -22,72 +23,99 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- The slider at 50% alpha -->
-
-    <TextView
-        android:id="@+id/sendMoneyText2"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
-        android:alpha="0.75"
         android:background="@drawable/bg_rounded_gray"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:lineSpacingExtra="8sp"
-        android:padding="16dp"
-        android:paddingStart="32dp"
-        android:paddingEnd="16dp"
-        android:text="@string/send_money_to_john"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405" />
+        app:layout_constraintVertical_bias="0.405"
+        app:shimmer_auto_start="true"
+        app:shimmer_base_alpha="0.60"
+        app:shimmer_direction="left_to_right"
+        app:shimmer_duration="3000">
+
+        <TextView
+            android:id="@+id/sendMoneyText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:lineSpacingExtra="8sp"
+            android:padding="16dp"
+            android:text="@string/send_money_to_john"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <ImageView
         android:id="@+id/vippsIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:alpha="1"
         android:contentDescription="@string/vipps"
         android:scaleType="centerInside"
-
         android:src="@drawable/vipps"
-        app:layout_constraintBottom_toBottomOf="@+id/sendMoneyText2"
-        app:layout_constraintStart_toStartOf="@+id/sendMoneyText2"
-        app:layout_constraintTop_toTopOf="@+id/sendMoneyText2" />
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerLayout"
+        app:layout_constraintStart_toStartOf="@+id/shimmerLayout"
+        app:layout_constraintTop_toTopOf="@+id/shimmerLayout" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/swipeSlider"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerSliderLayout"
         android:layout_width="0dp"
-        android:layout_height="96dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="80dp"
-        android:alpha="0.5"
-
-        android:background="@drawable/bg_rounded_gray"
-        android:foreground="@drawable/bg_rounded_gray"
-        android:stepSize="0"
-        android:theme="@style/Widget.CircleThumbSlider"
-        android:value="50"
-
-        android:valueFrom="0"
-        android:valueTo="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:thumbHeight="64dp" />
+        app:layout_constraintVertical_bias="1.0"
+        app:shimmer_auto_start="true"
+        app:shimmer_direction="left_to_right"
+        app:shimmer_duration="2500">
 
-    <!-- "Cancel" icon on the left, full opacity -->
+        <com.google.android.material.slider.Slider
+            android:id="@+id/swipeSlider"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="@drawable/bg_rounded_gray"
+            android:foreground="@drawable/bg_rounded_gray"
+            android:stepSize="0"
+            android:theme="@style/Widget.CircleThumbSlider"
+            android:value="50"
+            android:valueFrom="0"
+            android:valueTo="100"
+            app:thumbHeight="64dp" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <View
+        android:id="@+id/fingerView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="80dp"
+        android:alpha="0.75"
+        android:background="@drawable/circle_finger"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shimmerSliderLayout" />
+
     <ImageView
         android:id="@+id/denyIcon"
         android:layout_width="32dp"
@@ -96,13 +124,11 @@
         android:alpha="1"
         android:contentDescription="@string/cancel"
         android:scaleType="fitXY"
-
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@+id/swipeSlider"
-        app:layout_constraintStart_toStartOf="@+id/swipeSlider"
-        app:layout_constraintTop_toTopOf="@+id/swipeSlider" />
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerSliderLayout"
+        app:layout_constraintStart_toStartOf="@+id/shimmerSliderLayout"
+        app:layout_constraintTop_toTopOf="@+id/shimmerSliderLayout" />
 
-    <!-- "Confirm" icon on the right, full opacity -->
     <ImageView
         android:id="@+id/confirmIcon"
         android:layout_width="32dp"
@@ -111,9 +137,23 @@
         android:alpha="1"
         android:contentDescription="@string/confirm"
         android:scaleType="fitXY"
-
         android:src="@drawable/ic_check"
-        app:layout_constraintBottom_toBottomOf="@+id/swipeSlider"
-        app:layout_constraintEnd_toEndOf="@+id/swipeSlider"
-        app:layout_constraintTop_toTopOf="@+id/swipeSlider" />
+        app:layout_constraintBottom_toBottomOf="@+id/shimmerSliderLayout"
+        app:layout_constraintEnd_toEndOf="@+id/shimmerSliderLayout"
+        app:layout_constraintTop_toTopOf="@+id/shimmerSliderLayout" />
+
+    <View
+        android:id="@+id/holdOverlayView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="0dp"
+        android:background="@drawable/circle_green"
+        android:visibility="gone"
+        android:alpha="0.60"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleX="0"
+        android:scaleY="0"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

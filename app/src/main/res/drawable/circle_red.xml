@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- A semi-transparent fill -->
+    <solid android:color="@color/red" />
+
+    <!-- No corners or stroke needed if you just want a simple circle fill -->
+</shape>
